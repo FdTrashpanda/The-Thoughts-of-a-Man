@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+
+  <body>
+    <main>
+      <section id="outterContainer">
+
+        <div id="left">
+          <div id="innerleft">
+            <h1>The Thoughts of A Man</h1>
+            <p>Welcome! We're glad you're here. Explore our vast collection of articles, all while knowing your privacy is protected. We never sell your data or use invasive cookies. Enjoy a secure experience with us.</p>
+          </div>
+        </div>
+
+        <div id="right">
+          <div id="innerRight">
+          <h2>Sign In</h2>
+
+            <div>
+              <input type="email" placeholder="Enter Your Email Address">
+              <h3>Sign up now</h3>
+            </div>
+
+            <div>
+              <input type="password" placeholder="Enter Password" required>
+              <div id="inline">
+              <h3>Forgot Password</h3>
+              <h3 id="invalid">Invalid Details</h3>
+            </div>
+            </div>
+
+            <h4>Submit</h4>
+          </div>
+        </div>
+
+      </section>
+
+      <script>
+            $('#innerRight h3').click(function() {
+                var h2 = $('#innerRight h2');
+                var h3 = $(this);
+                
+                // Fade out the h2 to the left
+                h2.css({
+                    transform: 'translateX(-100%)',
+                    opacity: '0'
+                });
+
+                // Fade out the h3
+                h3.css({
+                    opacity: '0'
+                });
+
+                // Wait for the animation to complete
+                setTimeout(function() {
+                    // Change the text to "Sign Up" or "Sign In"
+                    if (h2.text() === 'Sign In') {
+                        h2.text('Sign Up');
+                        h3.text('Sign in');
+                    } else {
+                        h2.text('Sign In');
+                        h3.text('Sign up now');
+                    }
+
+                    // Move the h2 below the view and make it invisible
+                    h2.css({
+                        transform: 'translateY(100%)',
+                        opacity: '0'
+                    });
+
+                    // Trigger the transition to move h2 and h3 into view
+                    setTimeout(function() {
+                        h2.css({
+                            transform: 'translateY(0)',
+                            opacity: '1'
+                        });
+                        h3.css({
+                            opacity: '1'
+                        });
+                    }, 300); // A small delay to ensure the CSS change is applied
+                }, 500); // Match the duration of the transition
+            });
+      </script>
+    </main>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap");
+    </style>
+  </body>
+</html>
